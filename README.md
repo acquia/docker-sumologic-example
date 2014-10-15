@@ -23,7 +23,7 @@ Then, copy the following files to your own repo:
 
     files/bin/start-collector
     files/etc/sumo.conf
-    files/etc/sumo-sources.conf
+    files/etc/sumo-sources.json
 
 Then, set the following `ENV` variables, using `aptible config:set` if on Aptible (or via the `-e` flag when running Docker yourself). You can generate the access ID and access key by following [these instructions](https://service.sumologic.com/help/Generating_Collector_Installation_API_Keys.htm).
 
