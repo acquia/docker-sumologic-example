@@ -63,6 +63,15 @@ Then, set the following `ENV` variables, you can do this in Elastic Beanstalk or
 | `SUMO_COLLECTOR_NAME` | Helpful Name for Logs |
 | `SUMO_SOURCES_JSON`   | Sources file to use   |
 
+## How to build?
+
+````
+git clone git@github.com:acquia/docker-sumologic-example.git
+docker build .
+# Note the build ID and use it in the following command after -f. -f is to update the latest tag
+docker tag -f 2ad2f5b6d0b1 nickveenhof/aws-syslog:latest
+docker push nickveenhof/aws-syslog:latest
+````
 
 ## Copyright and License
 
