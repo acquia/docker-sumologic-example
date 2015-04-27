@@ -1,5 +1,5 @@
 DOCKER = docker
-REPO = quay.io/aptible/sumologic-example
+REPO = nickveenhof/aws-syslog
 
 TAG = $(shell git rev-parse --abbrev-ref HEAD 2>/dev/null)
 ifeq ($(TAG), master)
@@ -15,3 +15,5 @@ run: build
 
 build:
 	$(DOCKER) build -t $(REPO):$(TAG) .
+	$(DOCKER) tag -f 2ad2f5b6d0b1 nickveenhof/aws-syslog:latest
+	$(DOCKER) push nickveenhof/aws-syslog:latest
