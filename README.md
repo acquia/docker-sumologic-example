@@ -8,39 +8,66 @@ Example Sumo Logic integration on Docker/Aptible
     cd docker-sumologic-example/
     make run
 
-## Including Within An App On Aptible
+## Pre-build docker file
 
-To include within an Aptible app, copy the four body lines of the Dockerfile to your own Dockerfile:
+You can use
 
-    WORKDIR /tmp
-    RUN wget https://collectors.sumologic.com/rest/download/deb/64 -O sumo.deb && \
-        dpkg -i sumo.deb && rm sumo.deb
+````
+nickveenhof/aws-syslog
+````
 
-    ADD files/etc /etc
-    ADD files/bin /usr/local/bin
+This Docker build is hosted in the docker registry (https://registry.hub.docker.com/u/nickveenhof/aws-syslog/). If you want to run this in ECS you need the following configuration. Make sure your Container host has its sumo-sources.json file in the /var/app/current/acquia folder. Make also sure that the environment variables are set.
 
-Then, copy the following files to your own repo:
+````
+{
+  "AWSEBDockerrunVersion": "2",
+  "volumes": [
+    {
+      "name": "sumologic-sources",
+      "host": {
+        "sourcePath": "/var/app/current/acquia"
+      }
+    }
+  ],
+  "containerDefinitions": [
+    {
+      "name": "sumologic",
+      "image": "nickveenhof/aws-syslog",
+      "essential": true,
+      "memory": 256,
+      "portMappings": [
+        {
+          "hostPort": 25515,
+          "containerPort": 514
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "sumologic-sources",
+          "containerPath": "/etc/acquia",
+          "readOnly": true
+        }
+      ]
+    }
+  ]
+}
+````
 
-    files/bin/start-collector
-    files/etc/sumo.conf
-    files/etc/sumo-sources.json
 
-Then, set the following `ENV` variables, using `aptible config:set` if on Aptible (or via the `-e` flag when running Docker yourself). You can generate the access ID and access key by following [these instructions](https://service.sumologic.com/help/Generating_Collector_Installation_API_Keys.htm).
+Then, set the following `ENV` variables, you can do this in Elastic Beanstalk or locally via the -e flag when running Docker yourself. You can generate the access ID and access key by following these instructions.. You can generate the access ID and access key by following [these instructions](https://service.sumologic.com/help/Generating_Collector_Installation_API_Keys.htm).
 
 | Environment Variable  | Description           |
 | --------------------- | --------------------- |
-| `SUMOLOGIC_ACCESSID`  | Sumo Logic Access ID  |
-| `SUMOLOGIC_ACCESSKEY` | Sumo Logic Access Key |
-| `SUMOLOGIC_NAME`      | Helpful Name for Logs |
+| `SUMO_ACCESS_ID`      | Sumo Logic Access ID  |
+| `SUMO_ACCESS_KEY`     | Sumo Logic Access Key |
+| `SUMO_COLLECTOR_NAME` | Helpful Name for Logs |
+| `SUMO_SOURCES_JSON`   | Sources file to use   |
 
-Finally, modify your Procfile to run the `start-collector` process before your own app. Replace `example-app` with the command you use to start your app:
-
-    web: start-collector && example-app > /var/log/sumologic.log 2>&1
 
 ## Copyright and License
 
 MIT License, see [LICENSE](LICENSE.md) for details.
 
+Derived from Aptible. Customized for Acquia.
 Copyright (c) 2014 [Aptible](https://www.aptible.com) and contributors.
 
-[<img src="https://s.gravatar.com/avatar/f7790b867ae619ae0496460aa28c5861?s=60" style="border-radius: 50%;" alt="@fancyremarker" />](https://github.com/fancyremarker)
