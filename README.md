@@ -1,6 +1,6 @@
 # acquia/sumologic-example
 
-Example Sumo Logic integration on Docker/Aptible
+Example Sumo Logic integration on Docker - using Ubuntu 14.04 from Aptible.
 
 ## Installation and Usage
 
