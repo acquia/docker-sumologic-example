@@ -80,6 +80,6 @@ docker push nickveenhof/aws-syslog:latest
 
 MIT License, see [LICENSE](LICENSE.md) for details.
 
-Derived from Aptible. Customized for Acquia.
+Derived from Aptible. Customized for [Acquia](www.acquia.com).
 Copyright (c) 2014 [Aptible](https://www.aptible.com) and contributors.
 
