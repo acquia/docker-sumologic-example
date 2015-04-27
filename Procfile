@@ -1,1 +1,1 @@
-web: start-collector && example-app > /var/log/sumologic.log 2>&1
+web: start-collector > /var/log/sumologic.log 2>&1
