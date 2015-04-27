@@ -6,6 +6,9 @@ Example Sumo Logic integration on Docker/Aptible
 
     git clone https://github.com/aptible/docker-sumologic-example
     cd docker-sumologic-example/
+    export SUMO_ACCESS_ID=ACCESSIDHERE
+    export SUMO_ACCESS_KEY=ACCESSKEYHERE
+    make build
     make run
 
 ## Pre-build docker file
