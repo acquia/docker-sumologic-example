@@ -1,0 +1,20 @@
+{
+  "api.version": "v1",
+  "sources": [
+    {
+      "sourceType": "Syslog",
+      "name": "Syslog Source",
+      "port": 514,
+      "protocol": "TCP",
+      "encoding": "UTF-8",
+      "category": "syslog",
+      "timeZone": "UTC",
+      "automaticDateParsing": true,
+      "multilineProcessingEnabled": true,
+      "useAutolineMatching": true,
+      "manualPrefixRegex": "",
+      "forceTimeZone": false,
+      "defaultDateFormat": "dd/MMM/yyyy HH:mm:ss"
+    }
+  ]
+}

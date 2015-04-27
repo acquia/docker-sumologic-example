@@ -6,6 +6,5 @@ set -e
 sed -i "s/<SUMOLOGIC_ACCESSID>/$SUMO_ACCESS_ID/" /etc/sumo.conf
 sed -i "s/<SUMOLOGIC_ACCESSKEY>/$SUMO_ACCESS_KEY/" /etc/sumo.conf
 sed -i "s/<SUMOLOGIC_NAME>/$SUMO_COLLECTOR_NAME/" /etc/sumo.conf
-sed -i "s/<SUMOLOGIC_SOURCES>/$SUMO_SOURCES_JSON/" /etc/sumo.conf
 
 service collector start

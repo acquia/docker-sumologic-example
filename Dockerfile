@@ -9,7 +9,4 @@ RUN wget https://collectors.sumologic.com/rest/download/deb/64 -O sumo.deb && \
 ADD files/etc /etc
 ADD files/bin /usr/local/bin
 
-# Include your own app setup instructions here...
-# ...
-
 CMD start-collector > /var/log/sumologic.log 2>&1

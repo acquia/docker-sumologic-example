@@ -15,5 +15,4 @@ run: build
 
 build:
 	$(DOCKER) build -t $(REPO):$(TAG) .
-	$(DOCKER) tag -f 2ad2f5b6d0b1 nickveenhof/aws-syslog:latest
 	$(DOCKER) push nickveenhof/aws-syslog:latest
