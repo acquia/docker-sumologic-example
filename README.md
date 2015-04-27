@@ -59,12 +59,12 @@ This Docker build is hosted in the docker registry (https://registry.hub.docker.
 
 Then, set the following `ENV` variables, you can do this in Elastic Beanstalk or locally via the -e flag when running Docker yourself. You can generate the access ID and access key by following these instructions.. You can generate the access ID and access key by following [these instructions](https://service.sumologic.com/help/Generating_Collector_Installation_API_Keys.htm).
 
+It expects the sumo-sources.json file in /etc/acquia/sumo-sources.json
+
 | Environment Variable  | Description           |
 | --------------------- | --------------------- |
 | `SUMO_ACCESS_ID`      | Sumo Logic Access ID  |
 | `SUMO_ACCESS_KEY`     | Sumo Logic Access Key |
-| `SUMO_COLLECTOR_NAME` | Helpful Name for Logs |
-| `SUMO_SOURCES_JSON`   | Sources file to use   |
 
 ## How to build?
 
