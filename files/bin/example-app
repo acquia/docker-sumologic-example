@@ -1,7 +1,0 @@
-#!/bin/sh
-# example-app: Example app for SUMO Logic testing
-
-while true; do
-  echo "Hello World!"
-  sleep 1
-done
