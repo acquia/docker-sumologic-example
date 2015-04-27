@@ -11,8 +11,14 @@ endif
 all: build
 
 run: build
-	$(DOCKER) run -i -t $(shell cat .dockeropts) $(REPO)
+	$(DOCKER) run -d -p 8888 -e SUMO_ACCESS_ID=$(SUMO_ACCESS_ID) -e SUMO_ACCESS_KEY=$(SUMO_ACCESS_KEY) -e SUMO_COLLECTOR_NAME=$(SUMO_COLLECTOR_NAME) $(REPO)
+
+buildpush:
+	build
+	push
 
 build:
 	$(DOCKER) build -t $(REPO):$(TAG) .
+
+push:
 	$(DOCKER) push nickveenhof/aws-syslog:latest
