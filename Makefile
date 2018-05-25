@@ -1,5 +1,5 @@
 DOCKER = docker
-REPO = nickveenhof/aws-syslog
+REPO = acquia/aws-syslog
 
 TAG = $(shell git rev-parse --abbrev-ref HEAD 2>/dev/null)
 ifeq ($(TAG), master)
@@ -21,4 +21,4 @@ build:
 	$(DOCKER) build -t $(REPO):$(TAG) .
 
 push:
-	$(DOCKER) push nickveenhof/aws-syslog:latest
+	$(DOCKER) push acquia/aws-syslog:latest

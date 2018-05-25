@@ -16,10 +16,10 @@ Example Sumo Logic integration on Docker - using Ubuntu 14.04 from Aptible.
 You can use
 
 ````
-nickveenhof/aws-syslog
+acquia/aws-syslog
 ````
 
-This Docker build is hosted in the docker registry (https://registry.hub.docker.com/u/nickveenhof/aws-syslog/). If you want to run this in ECS you need the following configuration. Make sure your Container host has its sumo-sources.json file in the /var/app/current/acquia folder. Make also sure that the environment variables are set.
+This Docker build is hosted in the docker registry (https://registry.hub.docker.com/u/acquia/aws-syslog/). If you want to run this in ECS you need the following configuration. Make sure your Container host has its sumo-sources.json file in the /var/app/current/acquia folder. Make also sure that the environment variables are set.
 
 ````
 {
@@ -35,7 +35,7 @@ This Docker build is hosted in the docker registry (https://registry.hub.docker.
   "containerDefinitions": [
     {
       "name": "sumologic",
-      "image": "nickveenhof/aws-syslog",
+      "image": "acquia/aws-syslog",
       "essential": true,
       "memory": 256,
       "portMappings": [
@@ -72,8 +72,8 @@ It expects the sumo-sources.json file in /etc/acquia/sumo-sources.json
 git clone git@github.com:acquia/docker-sumologic-example.git
 docker build .
 # Note the build ID and use it in the following command after -f. -f is to update the latest tag
-docker tag -f 2ad2f5b6d0b1 nickveenhof/aws-syslog:latest
-docker push nickveenhof/aws-syslog:latest
+docker tag -f 2ad2f5b6d0b1 acquia/aws-syslog:latest
+docker push acquia/aws-syslog:latest
 ````
 
 ## Copyright and License
